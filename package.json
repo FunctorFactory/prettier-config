@@ -4,7 +4,6 @@
   "description": "Configuration for prettier in FunctorFactory packages",
   "main": "index.js",
   "scripts": {
-    "release": "changeset publish",
     "update-version": "changeset version && pnpm install --no-frozen-lockfile",
     "format": "prettier . --write --config index.js"
   },
