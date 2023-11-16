@@ -7,6 +7,7 @@
     "update-version": "changeset version && pnpm install --no-frozen-lockfile",
     "format": "prettier . --write --config index.js"
   },
+  "packageManager": "pnpm@8.10.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/FunctorFactory/prettier-config.git"
