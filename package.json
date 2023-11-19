@@ -1,6 +1,6 @@
 {
   "name": "@functorfactory/prettier-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Configuration for prettier in FunctorFactory packages",
   "main": "index.js",
   "scripts": {
