@@ -1,5 +1,6 @@
-/** @type {import("prettier").Options} */
-const config = {
+import type { Options } from 'prettier';
+
+export const Config: Options = {
   plugins: [],
   printWidth: 80,
   tabWidth: 2,
@@ -14,4 +15,4 @@ const config = {
   embeddedLanguageFormatting: 'auto',
 };
 
-module.exports = config;
+export default Config;

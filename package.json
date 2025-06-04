@@ -2,12 +2,37 @@
   "name": "@functorfactory/prettier-config",
   "version": "0.0.3",
   "description": "Configuration for prettier in FunctorFactory packages",
-  "main": "index.js",
-  "scripts": {
-    "update-version": "changeset version && pnpm install --no-frozen-lockfile",
-    "format": "prettier . --write --config index.js"
+  "main": "./dist/index.cjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "import": "./dist/*.js",
+      "require": "./dist/*.cjs"
+    }
   },
-  "packageManager": "pnpm@8.10.1",
+  "type": "module",
+  "files": [
+    "dist/*",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "prepare": "pnpm run clean && pnpm run build",
+    "clean": "rimraf dist .tsbuildinfo",
+    "update-version": "changeset version && pnpm install --no-frozen-lockfile",
+    "build": "tsup",
+    "check": "tsc -b tsconfig.json",
+    "format": "pnpm run build && prettier . --check",
+    "format:fix": "pnpm run build && prettier . --write",
+    "lint": "pnpm run build && eslint .",
+    "lint:fix": "pnpm run build && eslint . --fix"
+  },
+  "packageManager": "pnpm@10.11.1+sha512.e519b9f7639869dc8d5c3c5dfef73b3f091094b0a006d7317353c72b124e80e1afd429732e28705ad6bfa1ee879c1fce46c128ccebd3192101f43dd67c667912",
   "publishConfig": {
     "access": "public"
   },
@@ -27,7 +52,13 @@
   "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
-    "prettier": "^3.1.0"
+    "@functorfactory/eslint-config": "^0.3.1",
+    "@swc/core": "^1.11.29",
+    "eslint": "^9.28.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "prettier": "^3.1.0"
